@@ -1,38 +1,17 @@
-var tab;
-var tabContent;
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
 
-window.onload=function () {
-	tabContent = document.getElementsByClassName('tabContent');
-	tab = document.getElementsByClassName('tab');
-	hideTabsContent(1);
+btn.onclick = function () {
+	modal.style.display = "block";
 }
 
-function hideTabsContent(a) {
-	for (var i=a; i<tabContent.length; i++) {
-		tabContent[i].classList.remove('show');
-		tabContent[i].classList.add('hide');
-		tab[i].classList.remove('whiteborder');
-	}
+span.onclick = function () {
+	modal.style.display = "none";
 }
 
-document.getElementById('tabs').onclick = function (event) {
-	var target = event.target;
-	if (target.className == 'tab') {
-		for (var i = 0; i < tab.length; i++) {
-			if (target == tab[i]) {
-				ShowTabsContent(i);
-				break;
-			}			
-		}
-	}
-}
-
-function ShowTabsContent(b) {
-	if (tabContent[b].classList.contains('hide')) {
-		hideTabsContent(0);
-		tab[b].classList.add('whiteborder');
-		tabContent[b].classList.remove('hide');
-		tabContent[b].classList.add('show');
-
+window.onclick = function (event) {
+	if (event.target == modal) {
+		modal.style.display = "none";
 	}
 }
